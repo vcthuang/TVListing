@@ -23,16 +23,17 @@ export class TvListingService {
   }
 
   private transformToICurrentTV (data: IcurrentTVData): ICurrentTV {
+    console.log ("hello world from transformToICurrentTV");
+    console.log (data);
     return {
       name: data.name,
-      rating: data.rating,
       runtime: data.runtime,
       network: data.network.name,
       time: data.schedule.time,
-      days: data.schedule.days[0],
+      days: data.schedule.days,
       image: data.image.medium,
       officicalSite: data.officialSite,
       summary: data.summary
-    }
+    };
   }
 }

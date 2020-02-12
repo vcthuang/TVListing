@@ -1,12 +1,13 @@
 <div>
   <div>
     <h2>{{current.name}}</h2>
-    <p>Show Rating: {{current.rating | number: '1.0'}}</p>
+    <!--<p>Show Rating: {{current.rating}}</p>-->
     <p>Run Time: {{current.runtime}}</p>
-    <span>Time: {{current.days}} at {{current.time}}</span>
+    <span>{{current.days}} at {{current.time}}</span>
   </div>
   <div>
-    <p>{{current.summary}}</p>
+    <!--require the use of innerHTML since summary contains html codes-->
+    <p [innerHTML]="current.summary"></p>
     <!--property biding-->
     <img [src]='current.image' />
   </div>
