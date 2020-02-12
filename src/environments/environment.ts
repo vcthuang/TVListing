@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // added TVMaze Key & baseUrl
+  appID: 'cICl41eFd4pm8Rxv2vLIK8DHNBmQ53m0',
+  baseUrl: 'http://'
 };
 
 /*

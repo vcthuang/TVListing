@@ -1,8 +1,13 @@
 <div>
   <div>
-    <span>{{current.name}},{{current.rating}}</span>
+    <h2>{{current.name}}</h2>
+    <p>Show Rating: {{current.rating | number: '1.0'}}</p>
+    <p>Run Time: {{current.runtime}}</p>
+    <span>Time: {{current.days}} at {{current.time}}</span>
   </div>
   <div>
-    {{current.summary}}
+    <p>{{current.summary}}</p>
+    <!--property biding-->
+    <img [src]='current.image' />
   </div>
 </div>
