@@ -19,8 +19,7 @@ export class TvListingService {
       // need place holder `` and also string inference ${}
       // pipe transfor values from one to another
       // use map to make return observable
-      `${environment.baseUrl}api.tvmaze.com/singlesearch/shows?q=${name}`
-    ).pipe(map(data => this.transformToICurrentTV(data)));
+      `${environment.baseUrl}api.tvmaze.com/singlesearch/shows?q=${name}&appid=${environment.appID}`).pipe(map(data => this.transformToICurrentTV(data)));
   }
 
   private transformToICurrentTV (data: IcurrentTVData): ICurrentTV {
