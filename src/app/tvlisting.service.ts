@@ -37,7 +37,13 @@ export class TvListingService {
     console.log (data);
     
     // set up temporary variable to validate data, make sure it's not null
-    var tempName, tempNetwork, tempTime, tempImage, tempOfficialSite, tempSummary: string;
+    // in typescript, it's one variable at a time.
+    var tempName: string;
+    var tempNetwork: string;
+    var tempTime: string;
+    var tempImage: string;
+    var tempOfficialSite: string;
+    var tempSummary: string;
     var tempRuntime: number;
     var tempDays: string[];
 
