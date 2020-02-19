@@ -1,17 +1,21 @@
 <div>
-  <p>TV Listings:</p>
   <ul>
     <li *ngFor="let tvProgram of current">
-      <div>
-        <!--property biding-->
-        <img [src]='tvProgram.image' />
-        <h2>TV Show: {{tvProgram.name}}</h2>
-        <p>Network: {{tvProgram.Network}}</p>
-        <p>Run Time: {{tvProgram.runtime}}</p>
-        <p>Show Time: {{tvProgram.days}} at {{tvProgram.time}}</p>
-        <p>Official Site: {{tvProgram.officialSite}}</p>
-        <!--require the use of innerHTML since summary contains html codes-->
-        <p [innerHTML]="tvProgram.summary"></p>
+      <div class="searchResult-tile">
+        <div class="searchResult-photo" >
+          <!--property biding-->
+          <img width="250" [src]='tvProgram.image' alt ="No Image">
+        </div>
+        <div>
+          <h2>TV Show: {{tvProgram.name}}</h2>
+          <p class="searchResult-detail">Network: {{tvProgram.network}}</p>
+          <p class="searchResult-detail">Run Time: {{tvProgram.runtime}}</p>
+          <p class="searchResult-detail">Show Time: {{tvProgram.days}} at {{tvProgram.time}}</p>
+          <p class="searchResult-detail">Official Site: {{tvProgram.officicalSite}}</p>
+          <!--require the use of innerHTML since summary contains html codes-->
+          <p class="searchResult-detail" [innerHTML]="tvProgram.summary"></p>
+        </div>
+        <hr>
       </div>
     </li>
   </ul>
