@@ -7,6 +7,7 @@
           <img width="250" [src]='tvProgram.image' alt ="No Image">
         </div>
         <div>
+          <hr>
           <h2>TV Show: {{tvProgram.name}}</h2>
           <p class="searchResult-detail">Network: {{tvProgram.network}}</p>
           <p class="searchResult-detail">Run Time: {{tvProgram.runtime}}</p>
@@ -14,8 +15,8 @@
           <p class="searchResult-detail">Official Site: {{tvProgram.officicalSite}}</p>
           <!--require the use of innerHTML since summary contains html codes-->
           <p class="searchResult-detail" [innerHTML]="tvProgram.summary"></p>
+          <hr>
         </div>
-        <hr>
       </div>
     </li>
   </ul>

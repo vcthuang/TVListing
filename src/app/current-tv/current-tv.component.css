@@ -3,16 +3,19 @@ li {
   list-style: none;
 }
 
+.searchResult-tile {
+  display: flex;
+  height: 500px;
+}
+
 .searchResult-photo {
-  border: 2px solid #3F0C1F; 
-  overflow: hidden;
   padding: 0;
   max-width: 250px;
 }
 
 .searchResult-detail {
-  margin-left: 300px;
   width: 100%;
+  padding-left: 50px;
   text-align: left;
   font-size: .6em;
 }
