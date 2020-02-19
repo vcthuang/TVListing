@@ -8,3 +8,5 @@ export interface ICurrentTV {
   officicalSite: string
   summary: string
 }
+
+export interface ItvListing extends Array<ICurrentTV>{}

@@ -1,14 +1,18 @@
 <div>
-  <div>
-    <h2>{{current.name}}</h2>
-    <!--<p>Show Rating: {{current.rating}}</p>-->
-    <p>Run Time: {{current.runtime}}</p>
-    <span>{{current.days}} at {{current.time}}</span>
-  </div>
-  <div>
-    <!--require the use of innerHTML since summary contains html codes-->
-    <p [innerHTML]="current.summary"></p>
-    <!--property biding-->
-    <img [src]='current.image' />
-  </div>
+  <p>TV Listings:</p>
+  <ul>
+    <li *ngFor="let tvProgram of current">
+      <div>
+        <!--property biding-->
+        <img [src]='tvProgram.image' />
+        <h2>TV Show: {{tvProgram.name}}</h2>
+        <p>Network: {{tvProgram.Network}}</p>
+        <p>Run Time: {{tvProgram.runtime}}</p>
+        <p>Show Time: {{tvProgram.days}} at {{tvProgram.time}}</p>
+        <p>Official Site: {{tvProgram.officialSite}}</p>
+        <!--require the use of innerHTML since summary contains html codes-->
+        <p [innerHTML]="tvProgram.summary"></p>
+      </div>
+    </li>
+  </ul>
 </div>
