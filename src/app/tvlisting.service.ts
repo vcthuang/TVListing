@@ -99,10 +99,10 @@ export class TvListingService {
         if (data[i].show.image.medium) {
           tempImage = data[i].show.image.medium;
         } else {
-          tempImage = 'Unknown';  
+          tempImage = '';  
         }
       } else {
-        tempImage = 'Unknown';
+        tempImage = '';
       }
       console.log ('tempImage: ', tempImage);
 

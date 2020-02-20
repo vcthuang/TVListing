@@ -1,5 +1,7 @@
-<div>
+<!--make sure there is some data to display-->
+<div *ngIf="current">
   <ul>
+    <!--For loop to display an array of data-->
     <li *ngFor="let tvProgram of current">
       <div class="searchResult-tile">
         <div class="searchResult-photo" >
@@ -8,7 +10,7 @@
         </div>
         <div>
           <hr>
-          <h2>TV Show: {{tvProgram.name}}</h2>
+          <h2>{{tvProgram.name}}</h2>
           <p class="searchResult-detail">Network: {{tvProgram.network}}</p>
           <p class="searchResult-detail">Run Time: {{tvProgram.runtime}}</p>
           <p class="searchResult-detail">Show Time: {{tvProgram.days}} at {{tvProgram.time}}</p>

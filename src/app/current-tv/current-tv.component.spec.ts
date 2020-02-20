@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CurrentTvComponent } from './current-tv.component';
+import { TvListingService } from '../tvlisting.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('CurrentTvComponent', () => {
   let component: CurrentTvComponent;
@@ -11,7 +13,11 @@ describe('CurrentTvComponent', () => {
   // create a new thread for testing
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CurrentTvComponent ]
+      //added manually [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
+      declarations: [ CurrentTvComponent ],
+      //added manually [tvlistingservice]
+      providers:[TvListingService]
     })
     .compileComponents();
   }));
