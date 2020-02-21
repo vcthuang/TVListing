@@ -13,6 +13,7 @@ export class CurrentTvComponent implements OnInit {
   current:  ItvListing
   // create an instance of service
   constructor(private tvlistingService: TvListingService) { 
+      /*
       this.current = [
       {
         name: 'Girls',
@@ -35,6 +36,7 @@ export class CurrentTvComponent implements OnInit {
         summary: ' Good Girls follows three "good girl" suburban wives and mothers who suddenly find themselves in desperate circumstances and decide to stop playing it safe, and risk everything to take their power back.'
       }
      ] as ItvListing
+     */
     }
 
 

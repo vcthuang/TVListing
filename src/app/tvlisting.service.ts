@@ -26,8 +26,10 @@ export class TvListingService {
        `${environment.baseUrl}api.tvmaze.com/singlesearch/shows?q=${name}&appid=${environment.appID}`).pipe(map(data => this.transformToICurrentTV(data)));
       */
       
-      // For show query
-      `${environment.baseUrl}api.tvmaze.com/search/shows?q=${name}&appid=${environment.appID}`).pipe(map(data => this.transformToItvListing(data)));
+      // For show query, AppID is not required
+      // `${environment.baseUrl}api.tvmaze.com/search/shows?q=${name}&appid=${environment.appID}`).pipe(map(data => this.transformToItvListing(data)));
+
+      `${environment.baseUrl}api.tvmaze.com/search/shows?q=${name}`).pipe(map(data => this.transformToItvListing(data)));
   }
 
   private transformToItvListing (data: ItvListingData): ItvListing {
@@ -57,6 +59,7 @@ export class TvListingService {
       if (data[i].show.name) {
         tempName = data[i].show.name;
       } else {
+        // should never ever happen as we do serach on name
         tempName = 'Unknown';
       }
       console.log ('tempName: ', tempName);
@@ -64,7 +67,7 @@ export class TvListingService {
       if (data[i].show.runtime) {
         tempRuntime = data[i].show.runtime;
       } else {
-        tempRuntime = 0;
+        tempRuntime = null;
       }
       console.log ('tempRuntime: ', tempRuntime);
 
@@ -73,24 +76,29 @@ export class TvListingService {
           if (data[i].show.network.name) {
             tempNetwork = data[i].show.network.name;
           } else {
-            tempNetwork = 'Unknown';    
+            tempNetwork = 'Show not available at this time';    
           }
       } else {
-        tempNetwork = 'Unknown';
+        tempNetwork = 'Show not available at this time';
       }
       console.log ('tempNetwork: ', tempNetwork);
       
       if (data[i].show.schedule.time) {
         tempTime = data[i].show.schedule.time;
       } else {
-        tempTime = 'Unknown';
+        tempTime = null;
       }
       console.log ('tempTime: ', tempTime);
 
       if (data[i].show.schedule.days) {
-        tempDays = data[i].show.schedule.days;
+        if (data[i].show.schedule.days.length == 0) {
+          tempDays = null;
+        } else {
+          tempDays = data[i].show.schedule.days;
+        }
       } else {
-        tempDays = ['Unknown'];
+        //tempDays = [''];
+        tempDays = null;
       }
       console.log ('tempDays: ', tempDays);
 
@@ -109,14 +117,14 @@ export class TvListingService {
       if (data[i].show.officialSite) {
         tempOfficialSite = data[i].show.officialSite;
       } else {
-        tempOfficialSite = 'Unknown';
+        tempOfficialSite = null;
       }
       console.log ('tempOfficialSite: ', tempOfficialSite);
 
       if (data[i].show.summary) {
         tempSummary = data[i].show.summary;
       } else {
-        tempSummary = 'Unknown';
+        tempSummary = null;
       }
       console.log ('tempSummary: ', tempSummary);
 

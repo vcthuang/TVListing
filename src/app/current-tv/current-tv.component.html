@@ -1,22 +1,28 @@
 <!--make sure there is some data to display-->
-<div *ngIf="current">
+<div>
   <ul>
     <!--For loop to display an array of data-->
     <li *ngFor="let tvProgram of current">
       <div class="searchResult-tile">
-        <div class="searchResult-photo" >
-          <!--property biding-->
-          <img width="250" [src]='tvProgram.image' alt ="No Image">
+        
+        <!--the viewer can click on the image to go to official site if the links exists-->
+        <div class="searchResult-photo">
+          <div *ngIf = "tvProgram.officicalSite; else noLink"  >
+            <!--property biding-->
+            <a [href]="tvProgram.officicalSite"><img width="250" [src]="tvProgram.image" alt ="No Image"></a>
+          </div>
+          <ng-template #noLink><img width="250" [src]="tvProgram.image" alt ="No Image"></ng-template>
         </div>
+
         <div>
           <hr>
           <h2>{{tvProgram.name}}</h2>
-          <p class="searchResult-detail">Network: {{tvProgram.network}}</p>
-          <p class="searchResult-detail">Run Time: {{tvProgram.runtime}}</p>
-          <p class="searchResult-detail">Show Time: {{tvProgram.days}} at {{tvProgram.time}}</p>
-          <p class="searchResult-detail">Official Site: {{tvProgram.officicalSite}}</p>
+          <p class="searchResult-detail">Network:  {{tvProgram.network}}</p>
+          <p class="searchResult-detail">Run Time:  {{tvProgram.runtime}} mintues</p>
+          <p *ngIf="tvProgram.days" class="searchResult-detail">Show Date:  {{tvProgram.days}}</p>
+          <p *ngIf="tvProgram.time" class="searchResult-detail">Show Time:  {{tvProgram.time}}</p>
           <!--require the use of innerHTML since summary contains html codes-->
-          <p class="searchResult-detail" [innerHTML]="tvProgram.summary"></p>
+          <p *ngIf="tvProgram.summary" class="searchResult-detail" [innerHTML]="tvProgram.summary"></p>
           <hr>
         </div>
       </div>
