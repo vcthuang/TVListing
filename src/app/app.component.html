@@ -1,10 +1,14 @@
 <div style="text-align: center;">
-  <h1>
-    Local TV Program
-  </h1>
-  <div>Watch all these programs if you have time!</div>
-  <h2>
+  <mat-toolbar color = "primary">
+    <div>
+      Local TV Program
+    </div>
+  </mat-toolbar>
+  <div>
+    <app-tv-search></app-tv-search>
+  </div>
+  <mat-card color="primary">
     <!--create an instance of app-current-tv-->
     <app-current-tv></app-current-tv>
-  </h2>
+  </mat-card>
 </div>

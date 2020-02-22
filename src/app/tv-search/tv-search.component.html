@@ -1,0 +1,11 @@
+<form>
+  <mat-form-field>
+    <mat-icon matPrefix>search</mat-icon>
+    <!--whatever names givin in the formControl must match in ts file-->
+    <input matInput placeholder="Enter TV program" aria-label="TV program" [formControl] = 'search'>
+    <!--give error message if -->
+    <mat-error *ngIf="search.invalid">
+      Type 2 or more characters to search
+    </mat-error>
+  </mat-form-field>
+</form>
