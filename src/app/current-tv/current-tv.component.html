@@ -7,18 +7,19 @@
         
         <!--the viewer can click on the image to go to official site if the links exists-->
         <div class="searchResult-photo">
-          <div *ngIf = "tvProgram.officicalSite; else noLink"  >
-            <!--property biding-->
-            <a [href]="tvProgram.officicalSite"><img width="250" [src]="tvProgram.image" alt ="No Image"></a>
+          <div *ngIf = "tvProgram.image && tvProgram.officicalSite; else noLinkorImage"  >
+            <a [href]="tvProgram.officicalSite"><img width="250" [src]="tvProgram.image" target="_blank"></a>
           </div>
-          <ng-template #noLink><img width="250" [src]="tvProgram.image" alt ="No Image"></ng-template>
+          <ng-template #noLinkorImage >
+            <div *ngIf = "tvProgram.image"><img width="250" [src]="tvProgram.image" alt ="No Image"></div>
+          </ng-template>
         </div>
 
         <div>
           <hr>
           <h2>{{tvProgram.name}}</h2>
-          <p class="searchResult-detail">Network:  {{tvProgram.network}}</p>
-          <p class="searchResult-detail">Run Time:  {{tvProgram.runtime}} mintues</p>
+          <p *ngIf="tvProgram.network" class="searchResult-detail">Network:  {{tvProgram.network}}</p>
+          <p *ngIf="tvProgram.runtime" class="searchResult-detail">Run Time:  {{tvProgram.runtime}} mintues</p>
           <p *ngIf="tvProgram.days" class="searchResult-detail">Show Date:  {{tvProgram.days}}</p>
           <p *ngIf="tvProgram.time" class="searchResult-detail">Show Time:  {{tvProgram.time}}</p>
           <!--require the use of innerHTML since summary contains html codes-->

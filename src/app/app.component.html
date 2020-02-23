@@ -4,11 +4,11 @@
       Local TV Program
     </div>
   </mat-toolbar>
-  <div>
-    <app-tv-search></app-tv-search>
+  <div class="searchArea">
+    <app-tv-search (searchEvent)="doSearch($event)"></app-tv-search>
   </div>
   <mat-card color="primary">
     <!--create an instance of app-current-tv-->
-    <app-current-tv></app-current-tv>
+    <app-current-tv [current]="currentTVShows"></app-current-tv>
   </mat-card>
 </div>

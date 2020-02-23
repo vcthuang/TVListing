@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { TvListingService } from '../tvlisting.service';
 import { debounceTime } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-tv-search',
@@ -9,6 +10,9 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./tv-search.component.css']
 })
 export class TvSearchComponent implements OnInit {
+
+  @Output() searchEvent = new EventEmitter<string>();
+
   // match with html FormControl name
   // make sure the minimum lengh is 2 before firing an event
   search = new FormControl('',[Validators.minLength(2)]);
@@ -23,7 +27,8 @@ export class TvSearchComponent implements OnInit {
       .subscribe(
       (searchValue: string)=> {
         if (!this.search.invalid && searchValue) {
-          this.tvListingService.getCurrentTVListing(searchValue).subscribe (data => console.log(data));
+            // this.tvListingService.getCurrentTVListing(searchValue).subscribe (data => console.log(data));
+          this.searchEvent.emit (searchValue);
         }
       })
   }

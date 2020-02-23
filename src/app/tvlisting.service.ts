@@ -7,11 +7,12 @@ import { ICurrentTV } from './icurrent-tv';
 import { ItvListing } from './icurrent-tv';
 import { Observable } from 'rxjs';  // reactive transformations
 import { map } from 'rxjs/operators';
+import { ItvListingService } from './itv-listing-service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TvListingService {
+export class TvListingService implements ItvListingService {
   // using private keyword makes httpClient private to the class hence usable anywhere in the class
   constructor(private httpClient: HttpClient) { }
 
@@ -76,10 +77,10 @@ export class TvListingService {
           if (data[i].show.network.name) {
             tempNetwork = data[i].show.network.name;
           } else {
-            tempNetwork = 'Show not available at this time';    
+            tempNetwork = '';    
           }
       } else {
-        tempNetwork = 'Show not available at this time';
+        tempNetwork = '';
       }
       console.log ('tempNetwork: ', tempNetwork);
       

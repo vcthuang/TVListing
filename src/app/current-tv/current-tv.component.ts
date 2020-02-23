@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 //import { ICurrentTV } from '../icurrent-tv';
 import { ItvListing } from '../icurrent-tv';
 import { TvListingService } from '../tvlisting.service';
@@ -10,7 +10,7 @@ import { TvListingService } from '../tvlisting.service';
 })
 
 export class CurrentTvComponent implements OnInit {
-  current:  ItvListing
+  @Input() current:  ItvListing
   // create an instance of service
   constructor(private tvlistingService: TvListingService) { 
       /*
@@ -43,7 +43,7 @@ export class CurrentTvComponent implements OnInit {
   ngOnInit(): void {
     // arrow function => writing function within a function 
     // writing this way to make sure data is stayed up to date
-    this.tvlistingService.getCurrentTVListing('The Flash').subscribe(data => this.current = data);
+    //this.tvlistingService.getCurrentTVListing('The Flash').subscribe(data => this.current = data);
   }
 
 }
