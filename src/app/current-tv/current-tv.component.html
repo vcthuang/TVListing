@@ -8,7 +8,7 @@
         <!--the viewer can click on the image to go to official site if the links exists-->
         <div class="searchResult-photo">
           <div *ngIf = "tvProgram.image && tvProgram.officicalSite; else noLinkorImage"  >
-            <a [href]="tvProgram.officicalSite"><img width="250" [src]="tvProgram.image" target="_blank"></a>
+            <a [href]="tvProgram.officicalSite" target="_blank"><img width="250" [src]="tvProgram.image" ></a>
           </div>
           <ng-template #noLinkorImage >
             <div *ngIf = "tvProgram.image"><img width="250" [src]="tvProgram.image" alt ="No Image"></div>
