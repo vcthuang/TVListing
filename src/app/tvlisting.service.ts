@@ -38,107 +38,22 @@ export class TvListingService implements ItvListingService {
     console.log ("hello world from transformToItvListing");
     console.log (data.length);
     console.log (data);
-    
-    // set up temporary variable to validate data, make sure it's not null
-    // in typescript, it's one variable at a time.
-    var tempName: string;
-    var tempNetwork: string;
-    var tempTime: string;
-    var tempImage: string;
-    var tempOfficialSite: string;
-    var tempSummary: string;
-    var tempRuntime: number;
-    var tempDays: string[];
-
-    //var tvListing: ICurrentTV;
+ 
     // declare tvListing to house array of ICurrentTV data
     var tvListing: ICurrentTV[] = new Array(data.length);
     
     for (var i = 0; i < data.length; i++) {
-      // make sure data is not null
-      console.log ('arrary: ', i);
-      if (data[i].show.name) {
-        tempName = data[i].show.name;
-      } else {
-        // should never ever happen as we do serach on name
-        tempName = 'Unknown';
-      }
-      console.log ('tempName: ', tempName);
-
-      if (data[i].show.runtime) {
-        tempRuntime = data[i].show.runtime;
-      } else {
-        tempRuntime = null;
-      }
-      console.log ('tempRuntime: ', tempRuntime);
-
-      // there could be no network at all and to pull network.name will cause error
-      if (data[i].show.network) {
-          if (data[i].show.network.name) {
-            tempNetwork = data[i].show.network.name;
-          } else {
-            tempNetwork = '';    
-          }
-      } else {
-        tempNetwork = '';
-      }
-      console.log ('tempNetwork: ', tempNetwork);
       
-      if (data[i].show.schedule.time) {
-        tempTime = data[i].show.schedule.time;
-      } else {
-        tempTime = null;
-      }
-      console.log ('tempTime: ', tempTime);
-
-      if (data[i].show.schedule.days) {
-        if (data[i].show.schedule.days.length == 0) {
-          tempDays = null;
-        } else {
-          tempDays = data[i].show.schedule.days;
-        }
-      } else {
-        //tempDays = [''];
-        tempDays = null;
-      }
-      console.log ('tempDays: ', tempDays);
-
-      // there could be no image at all
-      if (data[i].show.image) {
-        if (data[i].show.image.medium) {
-          tempImage = data[i].show.image.medium;
-        } else {
-          tempImage = '';  
-        }
-      } else {
-        tempImage = '';
-      }
-      console.log ('tempImage: ', tempImage);
-
-      if (data[i].show.officialSite) {
-        tempOfficialSite = data[i].show.officialSite;
-      } else {
-        tempOfficialSite = null;
-      }
-      console.log ('tempOfficialSite: ', tempOfficialSite);
-
-      if (data[i].show.summary) {
-        tempSummary = data[i].show.summary;
-      } else {
-        tempSummary = null;
-      }
-      console.log ('tempSummary: ', tempSummary);
-
-      // Now data are all checked, they could be inserted without breaking
+      // make sure data exists so they could be inserted without breaking
       tvListing[i] = {
-        name: tempName,
-        runtime : tempRuntime,
-        network : tempNetwork,
-        time : tempTime,
-        days : tempDays,
-        image : tempImage,
-        officicalSite : tempOfficialSite,
-        summary : tempSummary
+        name: data[i].show.name? data[i].show.name:null,
+        runtime : data[i].show.runtime? data[i].show.runtime:null,
+        network : data[i].show.network? data[i].show.network.name:null,
+        time : data[i].show.schedule.time? data[i].show.schedule.time:null,
+        days : (data[i].show.schedule.days.length != 0)? data[i].show.schedule.days:null,
+        image : data[i].show.image? data[i].show.image.medium:null,
+        officicalSite : data[i].show.officialSite? data[i].show.officialSite:null,
+        summary : data[i].show.summary? data[i].show.summary:null
       }
     }
 
